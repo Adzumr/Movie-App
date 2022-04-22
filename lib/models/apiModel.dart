@@ -10,7 +10,7 @@ String welcomeToJson(Welcome data) => json.encode(data.toJson());
 
 class Welcome {
   Welcome({
-    required this.adult,
+    // required this.adult,
     required this.backdropPath,
     required this.belongsToCollection,
     required this.budget,
