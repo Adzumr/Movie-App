@@ -10,7 +10,7 @@ String welcomeToJson(Welcome data) => json.encode(data.toJson());
 
 class Welcome {
   Welcome({
-    // required this.adult,
+    required this.adult,
     required this.backdropPath,
     required this.belongsToCollection,
     required this.budget,
@@ -165,14 +165,14 @@ class ProductionCompany {
   factory ProductionCompany.fromJson(Map<String, dynamic> json) =>
       ProductionCompany(
         id: json["id"],
-        logoPath: json["logo_path"] ?? null,
+        logoPath: json["logo_path"],
         name: json["name"],
         originCountry: json["origin_country"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "logo_path": logoPath ?? null,
+        "logo_path": logoPath,
         "name": name,
         "origin_country": originCountry,
       };
