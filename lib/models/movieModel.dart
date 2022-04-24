@@ -6,40 +6,52 @@ class MovieDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        itemCount: movieInfo?.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image(
-                    // height: 200,
-                    fit: BoxFit.contain,
-                    image: NetworkImage(
-                      "http://image.tmdb.org/t/p/w500" +
-                          movieInfo![index]["poster_path"],
-                    ),
+    return ListView.builder(
+      itemCount: movieInfo?.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image(
+                  fit: BoxFit.contain,
+                  image: NetworkImage(
+                    "http://image.tmdb.org/t/p/w500" +
+                        movieInfo![index]["poster_path"],
                   ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(movieInfo![index]["title"]),
-                    Text(movieInfo![index]["release_date"]),
-                    Text(movieInfo![index]["overview"]),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+              ),
+              const SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        movieInfo![index]["title"],
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        "Rating: ${movieInfo![index]["vote_average"]}",
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                  Text(
+                    movieInfo![index]["overview"],
+                    // maxLines: 8,
+                    overflow: TextOverflow.visible,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
