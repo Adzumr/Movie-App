@@ -2,6 +2,8 @@
 //
 //     final welcome = welcomeFromJson(jsonString);
 
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
