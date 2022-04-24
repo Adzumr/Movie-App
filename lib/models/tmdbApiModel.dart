@@ -1,17 +1,17 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final welcome = tmdbFromJson(jsonString);
 
 // ignore_for_file: file_names
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+TmdbModel tmdbFromJson(String str) => TmdbModel.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String welcomeToJson(TmdbModel data) => json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
+class TmdbModel {
+  TmdbModel({
     required this.adult,
     required this.backdropPath,
     required this.belongsToCollection,
@@ -65,7 +65,7 @@ class Welcome {
   double voteAverage;
   int voteCount;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory TmdbModel.fromJson(Map<String, dynamic> json) => TmdbModel(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
