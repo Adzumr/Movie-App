@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       topPopularList = topPopular["results"];
       trendingTVList = trendingTVSeries["results"];
     });
-    log(topRated.toString());
+    log(topPopular.toString());
   }
 
   @override
@@ -87,6 +87,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: MovieList(
                         movieInfo: topRAtedList,
+                      ),
+                    ),
+                    const Text(
+                      "Top Popular Movies",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: MovieList(
+                        movieInfo: topPopularList,
                       ),
                     ),
                     // MovieList(
