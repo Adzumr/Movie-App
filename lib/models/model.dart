@@ -1,15 +1,16 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final MovieModel = MovieModelFromJson(jsonString);
 
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
+MovieModel MovieModelFromJson(String str) =>
+    MovieModel.fromJson(json.decode(str));
 
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
+String MovieModelToJson(MovieModel data) => json.encode(data.toJson());
 
-class Welcome {
-  Welcome({
+class MovieModel {
+  MovieModel({
     this.adult,
     this.backdropPath,
     this.belongsToCollection,
@@ -63,7 +64,7 @@ class Welcome {
   final double? voteAverage;
   final int? voteCount;
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],

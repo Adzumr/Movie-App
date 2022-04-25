@@ -67,25 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 16),
                 ),
               )
-            : Column(
-                children: [
-                  const Text("Trending Movies"),
-                  Expanded(
-                    child: MovieList(
-                      movieInfo: topRAtedList,
-                    ),
-                  ),
-                  Expanded(
-                    child: MovieList(
-                      movieInfo: topRAtedList,
-                    ),
-                  ),
-                  Expanded(
-                    child: MovieList(
-                      movieInfo: topRAtedList,
-                    ),
-                  ),
-                ],
+            : Expanded(
+                child: MovieList(
+                  movieInfo: topRAtedList,
+                ),
               ),
       ),
     );

@@ -7,6 +7,7 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: Axis.horizontal,
       itemCount: movieInfo?.length,
       itemBuilder: (BuildContext context, int index) {
         final String? posterPath =
@@ -21,7 +22,6 @@ class MovieList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: Image(
                   width: 180,
-                  // height: 100,
                   fit: BoxFit.contain,
                   image: NetworkImage(
                     posterPath!,
