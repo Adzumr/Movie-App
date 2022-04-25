@@ -13,8 +13,8 @@ class MovieList extends StatelessWidget {
         final String? posterPath =
             "http://image.tmdb.org/t/p/w500" + movieInfo![index]["poster_path"];
         final String? movieTitle = movieInfo![index]["title"];
-        return Container(
-          padding: const EdgeInsets.all(15.0),
+        return Padding(
+          padding: const EdgeInsets.only(right: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -30,6 +30,10 @@ class MovieList extends StatelessWidget {
               ),
               Text(
                 movieTitle!,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

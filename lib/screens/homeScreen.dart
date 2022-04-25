@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Constants constants = Constants();
   List topRAtedList = [];
+  List topPopularList = [];
   List trendingTVList = [];
 
   loadMovies() async {
@@ -43,10 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
           showLogs: true,
         ));
     Map topRated = await tmdbWithLogs.v3.movies.getTopRated();
+    Map topPopular = await tmdbWithLogs.v3.movies.getPopular();
     Map trendingTVSeries = await tmdbWithLogs.v3.trending.getTrending();
 
     setState(() {
       topRAtedList = topRated["results"];
+      topPopularList = topPopular["results"];
       trendingTVList = trendingTVSeries["results"];
     });
     log(topRated.toString());
@@ -67,9 +70,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 16),
                 ),
               )
-            : Expanded(
-                child: MovieList(
-                  movieInfo: topRAtedList,
+            : Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Top Rated Movies",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: MovieList(
+                        movieInfo: topRAtedList,
+                      ),
+                    ),
+                    // MovieList(
+                    //   movieInfo: topPopularList,
+                    // ),
+                  ],
                 ),
               ),
       ),
