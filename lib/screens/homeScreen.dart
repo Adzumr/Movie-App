@@ -7,7 +7,7 @@ import 'package:movie_app/models/constants.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-import '../models/movieModel.dart';
+import '../models/movieList.dart';
 import '../models/skeleton.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -71,7 +71,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   const Text("Trending Movies"),
                   Expanded(
-                    child: MovieDetail(
+                    child: MovieList(
+                      movieInfo: topRAtedList,
+                    ),
+                  ),
+                  Expanded(
+                    child: MovieList(
+                      movieInfo: topRAtedList,
+                    ),
+                  ),
+                  Expanded(
+                    child: MovieList(
                       movieInfo: topRAtedList,
                     ),
                   ),
