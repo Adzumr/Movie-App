@@ -7,8 +7,8 @@ import 'package:movie_app/models/constants.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-import '../models/movieList.dart';
-import '../models/skeleton.dart';
+import '../widgets/movieList.dart';
+import '../widgets/skeleton.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
