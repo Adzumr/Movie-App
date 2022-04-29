@@ -9,15 +9,35 @@ class MovieListSkelton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Expanded(
-            child: Skeleton(height: 200, width: 180),
-          ),
-          Expanded(
-            child: Skeleton(height: 200, width: 180),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 10),
+          const Skeleton(height: 30, width: 220),
+          const SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Column(
+                  children: const [
+                    Skeleton(height: 200, width: 180),
+                    SizedBox(height: 15),
+                    Skeleton(height: 10, width: 180),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  children: const [
+                    Skeleton(height: 200, width: 180),
+                    SizedBox(height: 15),
+                    Skeleton(height: 10, width: 180),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
