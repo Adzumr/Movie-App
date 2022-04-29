@@ -13,11 +13,14 @@ class MovieDetail extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Image(
-            //   image: AssetImage(poster!),
-            //   height: 300,
-            //   fit: BoxFit.contain,
-            // ),
+            Hero(
+              tag: "Poster",
+              child: Image(
+                image: NetworkImage(poster!),
+                height: 300,
+                fit: BoxFit.contain,
+              ),
+            ),
             Text(title!),
             Text(overview!),
           ],

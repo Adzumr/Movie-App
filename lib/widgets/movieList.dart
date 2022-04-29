@@ -14,14 +14,16 @@ class MovieList extends StatelessWidget {
         final String? posterPath =
             "http://image.tmdb.org/t/p/w500" + movieInfo![index]["poster_path"];
         final String? movieTitle = movieInfo![index]["title"];
-        final String? movieOverview = movieInfo![index]["overview"]; 
+        final String? movieOverview = movieInfo![index]["overview"];
         return InkWell(
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (_) => MovieDetail(
-                         overview: movieOverview, poster: posterPath, title: movieTitle,
+                          overview: movieOverview,
+                          poster: posterPath,
+                          title: movieTitle,
                         )));
           },
           child: Padding(
