@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MovieSkelton extends StatelessWidget {
-  const MovieSkelton({
+class MovieListSkelton extends StatelessWidget {
+  const MovieListSkelton({
     Key? key,
   }) : super(key: key);
 
@@ -11,26 +11,14 @@ class MovieSkelton extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Skeleton(height: 200, width: 200),
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: const [
-                  Skeleton(height: 5),
-                  SizedBox(height: 10),
-                  Skeleton(height: 5),
-                  SizedBox(height: 10),
-                  Skeleton(height: 5),
-                  SizedBox(height: 10),
-                  Skeleton(height: 5),
-                  SizedBox(height: 10),
-                  Skeleton(height: 100),
-                ],
-              ),
-            ),
-          )
+            child: Skeleton(height: 200, width: 180),
+          ),
+          Expanded(
+            child: Skeleton(height: 200, width: 180),
+          ),
         ],
       ),
     );

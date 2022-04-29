@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _isLoading = true;
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         _isLoading = false;
       });
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 highlightColor: Colors.blueAccent,
                 child: ListView.separated(
                   itemCount: 5,
-                  itemBuilder: (context, index) => const MovieSkelton(),
+                  itemBuilder: (context, index) => const MovieListSkelton(),
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 16),
                 ),
