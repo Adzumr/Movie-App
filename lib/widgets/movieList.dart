@@ -17,6 +17,7 @@ class MovieList extends StatelessWidget {
         final String? movieOverview = movieInfo![index]["overview"];
         final String? movieGenre =
             movieInfo![index]["production_companies"][5]!["name"];
+            
         //  production_companies[5].name
 
         return InkWell(
