@@ -5,8 +5,7 @@ class MovieDetail extends StatelessWidget {
   String? overview;
   String? poster;
   String? genres;
-  MovieDetail(
-      {Key? key, this.title, this.overview, this.poster, this.genres})
+  MovieDetail({Key? key, this.title, this.overview, this.poster, this.genres})
       : super(key: key);
 
   @override
@@ -29,7 +28,7 @@ class MovieDetail extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Column(children: [
-                  Text(genres!),
+                  Text("$genres"),
                   Text(title!),
                   Text(overview!),
                 ]),

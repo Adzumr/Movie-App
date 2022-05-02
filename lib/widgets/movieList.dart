@@ -15,9 +15,8 @@ class MovieList extends StatelessWidget {
             "http://image.tmdb.org/t/p/w500" + movieInfo![index]["poster_path"];
         final String? movieTitle = movieInfo![index]["title"];
         final String? movieOverview = movieInfo![index]["overview"];
-        final String? movieGenre =
-            movieInfo![index]["production_companies"][5]!["name"];
-            
+        final String? movieGenre = movieInfo![index]["homepage"];
+
         //  production_companies[5].name
 
         return InkWell(
