@@ -4,26 +4,38 @@ class MovieDetail extends StatelessWidget {
   String? title;
   String? overview;
   String? poster;
-  MovieDetail({Key? key, this.title, this.overview, this.poster})
+  String? genres;
+  MovieDetail(
+      {Key? key, this.title, this.overview, this.poster, this.genres})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Hero(
-              tag: "Poster",
-              child: Image(
-                image: NetworkImage(poster!),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
                 height: 300,
-                fit: BoxFit.contain,
+                width: double.infinity,
+                child: Image(
+                  height: 300,
+                  // width: double.infinity,
+                  fit: BoxFit.fill,
+                  image: NetworkImage(poster!),
+                ),
               ),
-            ),
-            Text(title!),
-            Text(overview!),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(children: [
+                  Text(genres!),
+                  Text(title!),
+                  Text(overview!),
+                ]),
+              ),
+            ],
+          ),
         ),
       ),
     );

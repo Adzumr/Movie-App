@@ -23,7 +23,7 @@ class MovieListSkelton extends StatelessWidget {
                   children: const [
                     Skeleton(height: 200, width: 180),
                     SizedBox(height: 15),
-                    Skeleton(height: 10, width: 180),
+                    Skeleton(height: 5, width: 180),
                   ],
                 ),
               ),
@@ -33,7 +33,7 @@ class MovieListSkelton extends StatelessWidget {
                   children: const [
                     Skeleton(height: 200, width: 180),
                     SizedBox(height: 15),
-                    Skeleton(height: 10, width: 180),
+                    Skeleton(height: 5, width: 180),
                   ],
                 ),
               ),

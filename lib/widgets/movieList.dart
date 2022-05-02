@@ -15,6 +15,10 @@ class MovieList extends StatelessWidget {
             "http://image.tmdb.org/t/p/w500" + movieInfo![index]["poster_path"];
         final String? movieTitle = movieInfo![index]["title"];
         final String? movieOverview = movieInfo![index]["overview"];
+        final String? movieGenre =
+            movieInfo![index]["production_companies"][5]!["name"];
+        //  production_companies[5].name
+
         return InkWell(
           onTap: () {
             Navigator.push(
@@ -24,6 +28,7 @@ class MovieList extends StatelessWidget {
                           overview: movieOverview,
                           poster: posterPath,
                           title: movieTitle,
+                          genres: movieGenre,
                         )));
           },
           child: Padding(
