@@ -1,11 +1,10 @@
 // ignore_for_file: file_names
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/constants.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tmdb_api/tmdb_api.dart';
+import 'package:http/http.dart' as http;
 
 import '../widgets/movieList.dart';
 import '../widgets/skeleton.dart';
@@ -28,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
     loadMovies();
+    loadQuran();
     super.initState();
   }
 
@@ -35,6 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
   List topRAtedList = [];
   List topPopularList = [];
   List trendingTVList = [];
+  var url = Uri.parse("http://api.alquran.cloud/v1/quran/quran-uthmani");
+  loadQuran() async {
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      print(response.body);
+    }
+  }
 
   loadMovies() async {
     TMDB tmdbWithLogs = TMDB(ApiKeys(constants.apiKey, constants.accessToken),
@@ -52,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       topPopularList = topPopular["results"];
       trendingTVList = trendingTVSeries["results"];
     });
-    log(topPopular.toString());
+    // log(topPopular.toString());
   }
 
   @override
