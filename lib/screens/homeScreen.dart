@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/constants.dart';
 import 'package:shimmer/shimmer.dart';
@@ -35,12 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
   List topRAtedList = [];
   List topPopularList = [];
   List trendingTVList = [];
-  var url = Uri.parse("http://api.alquran.cloud/v1/quran/quran-uthmani");
+  var url = Uri.parse("https://quotes15.p.rapidapi.com/quotes/random/");
+  var header = {
+    'X-RapidAPI-Host': 'quotes15.p.rapidapi.com',
+    'X-RapidAPI-Key': 'a3d86894bfmshb860463a4f82e0dp1d9364jsn8602f40687af'
+  };
+
+  dynamic quote;
+  dynamic originator;
   loadQuran() async {
-    var response = await http.get(url);
-    if (response.statusCode == 200) {
-      print(response.body);
-    }
+    return await http
+        .get(
+      url,
+      headers: header,
+    )
+        .then((value) {
+      if (value.statusCode == 200) {
+        final jsonData = json.decode(value.body);
+        quote = jsonData["content"];
+        originator = jsonData["content"]["originator"]["name"];
+        print(quote);
+      }
+    });
+    // print(response.body);
   }
 
   loadMovies() async {
@@ -65,6 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        setState(() {
+          loadQuran();
+        });
+      }),
       body: SafeArea(
         child: _isLoading
             ? Shimmer.fromColors(
@@ -83,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(quote), 
                     const Text(
                       "Top Rated Movies",
                       style: TextStyle(
