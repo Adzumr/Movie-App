@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/screens/homeScreen.dart';
+import 'package:sizer/sizer.dart';
+import 'utils/constants.dart';
+import 'screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Movie App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Sizer',
+          theme: ThemeData.dark().copyWith(
+            platform: TargetPlatform.iOS,
+            primaryColor: kPrimaryColor,
+            scaffoldBackgroundColor: kPrimaryColor,
+          ),
+          home: HomeScreen(
+            key: kHomeScreenKey,
+          ),
+        );
+      },
     );
   }
 }
