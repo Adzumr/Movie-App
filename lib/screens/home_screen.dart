@@ -12,9 +12,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-          child: Center(
-        child: Text("Home"),
-      ),),
+        child: Center(
+          child: Text("Home"),
+        ),
+      ),
     );
   }
 }
