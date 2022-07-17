@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/providers/movie_provider.dart';
+import 'package:movie_app/screens/popular_movies_screen.dart';
+import 'package:movie_app/utils/appColors.dart';
+import 'package:movie_app/utils/appFonts.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:sizer/sizer.dart';
-import 'screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: providers, child: const MyApp()));
 }
+
+final appColors = AppColors();
+final appFonts = AppFonts();
+
+List<SingleChildWidget> providers = [
+  ChangeNotifierProvider<MovieProvider>(create: (_) => MovieProvider()),
+];
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,8 +27,8 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Sizer',
-          home: HomeScreen(),
+          title: 'Movie App',
+          home: PopularMoviesScreen(),
         );
       },
     );
