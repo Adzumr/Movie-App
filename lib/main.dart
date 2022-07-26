@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/providers/movie_provider.dart';
+import 'package:movie_app/screens/movie_detail_screen.dart';
 import 'package:movie_app/screens/popular_movies_screen.dart';
 import 'package:movie_app/utils/appColors.dart';
 import 'package:movie_app/utils/appFonts.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         return const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Movie App',
-          home: PopularMoviesScreen(),
+          home: MovieDetailScreen(),
         );
       },
     );
