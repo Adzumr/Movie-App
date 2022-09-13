@@ -11,6 +11,6 @@ InputDecoration myAppInputDecoration = InputDecoration(
 InputBorder enableInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(15),
   borderSide: BorderSide(
-    color: appColors.whiteColor,
+    color: appColors.shadowColor,
   ),
 );

@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/providers/movie_provider.dart';
-import 'package:movie_app/screens/movie_detail_screen.dart';
-import 'package:movie_app/screens/popular_movies_screen.dart';
-import 'package:movie_app/utils/appColors.dart';
-import 'package:movie_app/utils/appFonts.dart';
-import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:movie_app/screens/home_screen.dart';
+import 'package:movie_app/utils/app_colors.dart';
+import 'package:movie_app/utils/font_styles.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:sizer/sizer.dart';
 
+import 'utils/app_images.dart';
+
 void main() {
-  runApp(MultiProvider(providers: providers, child: const MyApp()));
+  runApp(
+    // MultiProvider(
+    //   providers: providers,
+    //   child: const
+    const MyApp(),
+    // ),
+  );
 }
 
 final appColors = AppColors();
-final appFonts = AppFonts();
+final appFonts = FontStyles();
+final appImages = AppImages();
 
 List<SingleChildWidget> providers = [
-  ChangeNotifierProvider<MovieProvider>(create: (_) => MovieProvider()),
+  // ChangeNotifierProvider<MovieProvider>(create: (_) => MovieProvider()),
 ];
 
 class MyApp extends StatelessWidget {
@@ -26,10 +33,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Movie App',
-          home: MovieDetailScreen(),
+          theme: ThemeData(
+              textTheme: TextTheme(
+            bodyText2: GoogleFonts.roboto(
+              fontSize: 14.sp,
+              color: appColors.whiteColor,
+            ),
+          )),
+          home: const HomeScreen(),
         );
       },
     );
