@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:sizer/sizer.dart';
 
+import 'providers/now_playing_provider.dart';
+import 'providers/popular_provider.dart';
+import 'providers/upcoming_provider.dart';
 import 'utils/app_images.dart';
 
 void main() {
@@ -25,6 +28,9 @@ final appImages = AppImages();
 
 List<SingleChildWidget> providers = [
   ChangeNotifierProvider<TopRatedProvider>(create: (_) => TopRatedProvider()),
+  ChangeNotifierProvider<PopularProvider>(create: (_) => PopularProvider()),
+  ChangeNotifierProvider<UpComingProvider>(create: (_) => UpComingProvider()),
+  ChangeNotifierProvider<NowPlayProvider>(create: (_) => NowPlayProvider()),
 ];
 
 class MyApp extends StatelessWidget {

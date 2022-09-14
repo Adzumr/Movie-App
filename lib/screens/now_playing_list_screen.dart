@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:movie_app/main.dart';
-import 'package:movie_app/models/top_rated_model.dart';
+import 'package:movie_app/models/now_playing_model.dart';
 import 'package:movie_app/utils/constants.dart';
 import 'package:sizer/sizer.dart';
 
-class TopRatedListScreen extends StatefulWidget {
-  final TopRatedModel? models;
-  const TopRatedListScreen({this.models, Key? key}) : super(key: key);
+class NowPlayingListScreen extends StatefulWidget {
+  final NowPlayingModel? models;
+  const NowPlayingListScreen({this.models, Key? key}) : super(key: key);
 
   @override
-  State<TopRatedListScreen> createState() => _TopRatedListScreenState();
+  State<NowPlayingListScreen> createState() => _NowPlayingListScreenState();
 }
 
-class _TopRatedListScreenState extends State<TopRatedListScreen> {
+class _NowPlayingListScreenState extends State<NowPlayingListScreen> {
   @override
   Widget build(BuildContext context) {
     final model = widget.models;
@@ -22,7 +22,7 @@ class _TopRatedListScreenState extends State<TopRatedListScreen> {
         elevation: 0,
         backgroundColor: appColors.backgorundColor,
         title: const Text(
-          "Top Rated Movies",
+          "Now Playing Movies",
         ),
       ),
       backgroundColor: appColors.backgorundColor,
