@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../utils/input_borders.dart';
+import 'detailed_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -153,19 +154,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: ((context, index) {
                                   final movie = nowPlayingdata
                                       .nowPlayingModel!.results![index];
-                                  return Container(
-                                    margin: EdgeInsets.only(right: 20.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        image: NetworkImage(
-                                            imageBaseUrl + movie.backdropPath!),
-                                        // height: 20.h,
-                                        width: 25.h,
-                                        fit: BoxFit.cover,
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailedScreen(
+                                            movieId: "${movie.id}",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 20.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          image: NetworkImage(imageBaseUrl +
+                                              movie.backdropPath!),
+                                          // height: 20.h,
+                                          width: 25.h,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   );
@@ -210,19 +223,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: ((context, index) {
                                   final movie =
                                       popularData.popularModel!.results![index];
-                                  return Container(
-                                    margin: EdgeInsets.only(right: 20.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        image: NetworkImage(
-                                            imageBaseUrl + movie.backdropPath!),
-                                        // height: 20.h,
-                                        width: 25.h,
-                                        fit: BoxFit.cover,
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailedScreen(
+                                            movieId: "${movie.id}",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 20.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          image: NetworkImage(imageBaseUrl +
+                                              movie.backdropPath!),
+                                          // height: 20.h,
+                                          width: 25.h,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   );
@@ -269,19 +294,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: ((context, index) {
                                   final movie = topRatedMovies
                                       .topRatedModel!.results![index];
-                                  return Container(
-                                    margin: EdgeInsets.only(right: 20.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        image: NetworkImage(
-                                            imageBaseUrl + movie.backdropPath!),
-                                        // height: 20.h,
-                                        width: 25.h,
-                                        fit: BoxFit.cover,
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailedScreen(
+                                            movieId: "${movie.id}",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 20.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          image: NetworkImage(imageBaseUrl +
+                                              movie.backdropPath!),
+                                          // height: 20.h,
+                                          width: 25.h,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   );
@@ -327,19 +364,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: ((context, index) {
                                   final movie = upComingdata
                                       .upComingModel!.results![index];
-                                  return Container(
-                                    margin: EdgeInsets.only(right: 20.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        image: NetworkImage(
-                                            imageBaseUrl + movie.backdropPath!),
-                                        // height: 20.h,
-                                        width: 25.h,
-                                        fit: BoxFit.cover,
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailedScreen(
+                                            movieId: "${movie.id}",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(right: 20.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          image: NetworkImage(imageBaseUrl +
+                                              movie.backdropPath!),
+                                          // height: 20.h,
+                                          width: 25.h,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   );
