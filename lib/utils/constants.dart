@@ -5,7 +5,7 @@ String movieUrl(String? page) {
 }
 
 String searchUrl(String? movieName) {
-  return "https://api.themoviedb.org/3/search/company?api_key=$apiKey&query=$movieName&page=1";
+  return "https://api.themoviedb.org/3/search/movie?api_key=$apiKey&language=en-US&query=$movieName&page=1&include_adult=false";
 }
 
 String getDetailUrl(String? movieId) {

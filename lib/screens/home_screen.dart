@@ -71,340 +71,326 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: CircularProgressIndicator.adaptive(),
                 );
               } else {
-                if (upComingdata.upComingModel != null ||
-                    topRatedMovies.topRatedModel != null ||
-                    popularData.popularModel != null) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SearchScreen(),
+                return SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SearchScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 10.sp),
+                          child: TextFormField(
+                            validator: (value) =>
+                                value!.isEmpty ? "Empty Object" : null,
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Ionicons.search_outline,
+                                ),
                               ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 10.sp),
-                            child: TextFormField(
-                              validator: (value) =>
-                                  value!.isEmpty ? "Empty Object" : null,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Ionicons.search_outline,
-                                  ),
-                                ),
-                                filled: true,
-                                enabled: false,
-                                fillColor: appColors.shadowColor,
-                                enabledBorder: enableInputBorder,
-                                disabledBorder: enableInputBorder,
-                                hintText: "Search",
-                                hintStyle: TextStyle(
-                                  color: appColors.backgorundColor,
-                                ),
+                              filled: true,
+                              enabled: false,
+                              fillColor: appColors.shadowColor,
+                              enabledBorder: enableInputBorder,
+                              disabledBorder: enableInputBorder,
+                              hintText: "Search",
+                              hintStyle: TextStyle(
+                                color: appColors.backgorundColor,
                               ),
                             ),
                           ),
                         ),
-                        Text(
-                          "What do you want to watch?",
-                          style: appFonts.titleFont,
-                        ),
+                      ),
+                      Text(
+                        "What do you want to watch?",
+                        style: appFonts.titleFont,
+                      ),
 
-                        // Now playing category
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 5.sp),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Now Playing"),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              NowPlayingListScreen(
-                                            models:
-                                                nowPlayingdata.nowPlayingModel,
-                                          ),
+                      // Now playing category
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 5.sp),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Now Playing"),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            NowPlayingListScreen(
+                                          models:
+                                              nowPlayingdata.nowPlayingModel,
                                         ),
-                                      );
-                                    },
-                                    child: const Text("View All"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5.sp),
-                              height: 23.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: ((context, index) {
-                                  final movie = nowPlayingdata
-                                      .nowPlayingModel!.results![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailedScreen(
-                                            movieId: "${movie.id}",
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 20.sp),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          image: NetworkImage(imageBaseUrl +
-                                              movie.backdropPath!),
-                                          // height: 20.h,
-                                          width: 25.h,
-                                          fit: BoxFit.cover,
+                                    );
+                                  },
+                                  child: const Text("View All"),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 5.sp),
+                            height: 23.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 3,
+                              itemBuilder: ((context, index) {
+                                final movie = nowPlayingdata
+                                    .nowPlayingModel!.results![index];
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailedScreen(
+                                          movieId: "${movie.id}",
                                         ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 20.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            imageBaseUrl + movie.backdropPath!),
+                                        // height: 20.h,
+                                        width: 25.h,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  );
-                                }),
-                              ),
+                                  ),
+                                );
+                              }),
                             ),
-                          ],
-                        ),
-                        // Popular category
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 5.sp),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Popular movies"),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              PopularListScreen(
-                                            models: popularData.popularModel,
-                                          ),
+                          ),
+                        ],
+                      ),
+                      // Popular category
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 5.sp),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Popular movies"),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => PopularListScreen(
+                                          models: popularData.popularModel,
                                         ),
-                                      );
-                                    },
-                                    child: const Text("View All"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5.sp),
-                              height: 23.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: ((context, index) {
-                                  final movie =
-                                      popularData.popularModel!.results![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailedScreen(
-                                            movieId: "${movie.id}",
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 20.sp),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          image: NetworkImage(imageBaseUrl +
-                                              movie.backdropPath!),
-                                          // height: 20.h,
-                                          width: 25.h,
-                                          fit: BoxFit.cover,
+                                    );
+                                  },
+                                  child: const Text("View All"),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 5.sp),
+                            height: 23.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 3,
+                              itemBuilder: ((context, index) {
+                                final movie =
+                                    popularData.popularModel!.results![index];
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailedScreen(
+                                          movieId: "${movie.id}",
                                         ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 20.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            imageBaseUrl + movie.backdropPath!),
+                                        // height: 20.h,
+                                        width: 25.h,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  );
-                                }),
-                              ),
+                                  ),
+                                );
+                              }),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
 
-                        // Top rated category
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 5.sp),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Top rated movies"),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              TopRatedListScreen(
-                                            models:
-                                                topRatedMovies.topRatedModel,
-                                          ),
+                      // Top rated category
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 5.sp),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Top rated movies"),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            TopRatedListScreen(
+                                          models: topRatedMovies.topRatedModel,
                                         ),
-                                      );
-                                    },
-                                    child: const Text("View All"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5.sp),
-                              height: 23.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: ((context, index) {
-                                  final movie = topRatedMovies
-                                      .topRatedModel!.results![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailedScreen(
-                                            movieId: "${movie.id}",
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 20.sp),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          image: NetworkImage(imageBaseUrl +
-                                              movie.backdropPath!),
-                                          // height: 20.h,
-                                          width: 25.h,
-                                          fit: BoxFit.cover,
+                                    );
+                                  },
+                                  child: const Text("View All"),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 5.sp),
+                            height: 23.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 3,
+                              itemBuilder: ((context, index) {
+                                final movie = topRatedMovies
+                                    .topRatedModel!.results![index];
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailedScreen(
+                                          movieId: "${movie.id}",
                                         ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 20.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            imageBaseUrl + movie.backdropPath!),
+                                        // height: 20.h,
+                                        width: 25.h,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  );
-                                }),
-                              ),
+                                  ),
+                                );
+                              }),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
 
-                        // Upcoming category
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 5.sp),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Upcoming movies"),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpComingListScreen(
-                                            models: upComingdata.upComingModel,
-                                          ),
+                      // Upcoming category
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 5.sp),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Upcoming movies"),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpComingListScreen(
+                                          models: upComingdata.upComingModel,
                                         ),
-                                      );
-                                    },
-                                    child: const Text("View All"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(bottom: 5.sp),
-                              height: 23.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: ((context, index) {
-                                  final movie = upComingdata
-                                      .upComingModel!.results![index];
-                                  return InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailedScreen(
-                                            movieId: "${movie.id}",
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 20.sp),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          image: NetworkImage(imageBaseUrl +
-                                              movie.backdropPath!),
-                                          // height: 20.h,
-                                          width: 25.h,
-                                          fit: BoxFit.cover,
+                                    );
+                                  },
+                                  child: const Text("View All"),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 5.sp),
+                            height: 23.h,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 3,
+                              itemBuilder: ((context, index) {
+                                final movie =
+                                    upComingdata.upComingModel!.results![index];
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailedScreen(
+                                          movieId: "${movie.id}",
                                         ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 20.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        image: NetworkImage(
+                                            imageBaseUrl + movie.backdropPath!),
+                                        // height: 20.h,
+                                        width: 25.h,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  );
-                                }),
-                              ),
+                                  ),
+                                );
+                              }),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                } else {
-                  return const Center(
-                    child: Text("Movies not found"),
-                  );
-                }
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
               }
             },
           ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:movie_app/main.dart';
@@ -64,11 +65,24 @@ class _DetailedScreenState extends State<DetailedScreen> {
                           children: [
                             Positioned(
                               top: 0,
-                              child: Image(
-                                image: NetworkImage(
-                                    imageBaseUrl + movie!.backdropPath!),
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    imageBaseUrl + "${movie!.backdropPath}",
                                 height: 25.h,
                                 fit: BoxFit.contain,
+                                placeholder: (context, url) => const Center(
+                                  child: Text(
+                                    "Loading...",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Center(
+                                  child: Text(
+                                    "",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
                             ),
                             Positioned(
@@ -79,12 +93,15 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(15),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          imageBaseUrl + movie.posterPath!),
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          imageBaseUrl + "${movie.posterPath}",
                                       height: 20.h,
                                       width: 15.h,
-                                      fit: BoxFit.fitHeight,
+                                      placeholder: (context, url) =>
+                                          const SizedBox.shrink(),
+                                      errorWidget: (context, url, error) =>
+                                          const SizedBox.shrink(),
                                     ),
                                   ),
                                   SizedBox(width: 5.w),
