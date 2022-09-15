@@ -19,9 +19,9 @@ Future<PopularModel?> getPopular() async {
     );
     if (response.statusCode == 200) {
       popularModel = PopularModel.fromJson(jsonDecode(response.body));
-      log("popular: " + response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

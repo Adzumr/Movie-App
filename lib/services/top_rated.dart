@@ -19,9 +19,9 @@ Future<TopRatedModel?> getTopRated() async {
     );
     if (response.statusCode == 200) {
       topRatedModel = TopRatedModel.fromJson(jsonDecode(response.body));
-      log(response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

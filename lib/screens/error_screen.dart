@@ -14,7 +14,6 @@ class ErrorScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(20.sp),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox.shrink(),

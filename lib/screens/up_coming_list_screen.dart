@@ -56,15 +56,12 @@ class _UpComingListScreenState extends State<UpComingListScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: CachedNetworkImage(
-                          imageUrl: imageBaseUrl + movie.posterPath!,
+                          imageUrl: imageBaseUrl + "${movie.posterPath}",
                           height: 18.h,
                           width: 18.h,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => const Center(
-                            child: Text(
-                              "Loading...",
-                              textAlign: TextAlign.center,
-                            ),
+                            child: CircularProgressIndicator.adaptive(),
                           ),
                           errorWidget: (context, url, error) => const Center(
                             child: Text(

@@ -19,9 +19,9 @@ Future<MovieModel?> getDetail({String? keyword}) async {
     );
     if (response.statusCode == 200) {
       movieModel = MovieModel.fromJson(jsonDecode(response.body));
-      log("Movie: " + response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

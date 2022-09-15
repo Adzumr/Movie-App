@@ -19,9 +19,9 @@ Future<UpComingModel?> getUpcoming() async {
     );
     if (response.statusCode == 200) {
       upComingModel = UpComingModel.fromJson(jsonDecode(response.body));
-      log("upcoming: " + response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

@@ -19,9 +19,9 @@ Future<NowPlayingModel?> getNowPlaying() async {
     );
     if (response.statusCode == 200) {
       nowPlayingModel = NowPlayingModel.fromJson(jsonDecode(response.body));
-      log("now_playing: " + response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

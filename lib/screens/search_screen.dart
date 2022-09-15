@@ -86,7 +86,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ),
                         );
-                      } else if (searchResult.seachModel != null ||
+                      } else if (searchResult.seachModel == null ||
                           searchResult.seachModel!.results!.isEmpty) {
                         return SizedBox(
                           height: 80.h,
@@ -127,11 +127,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                     width: 15.h,
                                     fit: BoxFit.fill,
                                     placeholder: (context, url) => const Center(
-                                      child: Text(
-                                        "Loading...",
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
+                                        child: CircularProgressIndicator
+                                            .adaptive()),
                                     errorWidget: (context, url, error) =>
                                         const Center(
                                       child: Text(

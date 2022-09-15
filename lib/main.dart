@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/providers/top_rated_provider.dart';
-import 'package:movie_app/screens/error_screen.dart';
 import 'package:movie_app/screens/home_screen.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/font_styles.dart';
@@ -17,7 +16,7 @@ import 'providers/upcoming_provider.dart';
 import 'utils/app_images.dart';
 
 void main() async {
-  ErrorWidget.builder = (FlutterErrorDetails details) => const ErrorScreen();
+  // ErrorWidget.builder = (FlutterErrorDetails details) => const ErrorScreen();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(

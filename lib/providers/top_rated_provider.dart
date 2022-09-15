@@ -7,6 +7,6 @@ class TopRatedProvider extends ChangeNotifier {
   Future<TopRatedModel?> fetchTopRated() async {
     topRatedModel = (await getTopRated());
     notifyListeners();
-    return null;
+    return topRatedModel!;
   }
 }

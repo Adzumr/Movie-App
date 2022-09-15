@@ -19,9 +19,9 @@ Future<SearchModel?> searchMovie({String? keyword}) async {
     );
     if (response.statusCode == 200) {
       searchModel = SearchModel.fromJson(jsonDecode(response.body));
-      log("Result: " + response.body);
+      log("${response.statusCode}");
     } else {
-      log(response.statusCode.toString());
+      log("${response.statusCode}");
     }
   } catch (e) {
     log(e.toString());

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:movie_app/main.dart';
@@ -54,11 +55,20 @@ class _NowPlayingListScreenState extends State<NowPlayingListScreen> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image(
-                          image: NetworkImage(imageBaseUrl + movie.posterPath!),
+                        child: CachedNetworkImage(
+                          imageUrl: imageBaseUrl + "${movie.posterPath}",
                           height: 18.h,
                           width: 18.h,
                           fit: BoxFit.cover,
+                          placeholder: (context, url) => const Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                          errorWidget: (context, url, error) => const Center(
+                            child: Text(
+                              "No\nImage",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
                       ),
                       Container(
