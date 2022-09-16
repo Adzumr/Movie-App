@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Container(
+                child: Container( 
                   margin: EdgeInsets.symmetric(vertical: 10.sp),
                   child: TextFormField(
                     validator: (value) =>
@@ -84,9 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
                         onPressed: () {},
-                        icon: const Icon(
-                          Ionicons.search_outline,
-                        ),
+                        icon: const Icon(Ionicons.search_outline),
                       ),
                       filled: true,
                       enabled: false,
