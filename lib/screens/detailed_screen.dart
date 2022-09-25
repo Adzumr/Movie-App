@@ -6,7 +6,7 @@ import 'package:movie_app/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../providers/get_detail_provider.dart';
+import '../controllers/get_detail_provider.dart';
 
 class DetailedScreen extends StatefulWidget {
   final String? movieId;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/providers/top_rated_provider.dart';
+import 'package:movie_app/controllers/top_rated_provider.dart';
 import 'package:movie_app/screens/home_screen.dart';
 import 'package:movie_app/utils/app_colors.dart';
 import 'package:movie_app/utils/font_styles.dart';
@@ -8,11 +8,11 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:sizer/sizer.dart';
 
-import 'providers/get_detail_provider.dart';
-import 'providers/now_playing_provider.dart';
-import 'providers/popular_provider.dart';
-import 'providers/search_provider.dart';
-import 'providers/upcoming_provider.dart';
+import 'controllers/get_detail_provider.dart';
+import 'controllers/now_playing_provider.dart';
+import 'controllers/popular_provider.dart';
+import 'controllers/search_provider.dart';
+import 'controllers/upcoming_provider.dart';
 import 'utils/app_images.dart';
 
 void main() async {

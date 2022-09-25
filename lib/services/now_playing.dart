@@ -7,9 +7,6 @@ import 'package:movie_app/utils/constants.dart';
 
 Future<NowPlayingModel?> getNowPlaying() async {
   NowPlayingModel? nowPlayingModel;
-  final header = {
-    "X-RapidAPI-Key": apiKey,
-  };
   try {
     final response = await http.get(
       Uri.parse(

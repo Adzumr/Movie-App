@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 import 'package:movie_app/main.dart';
-import 'package:movie_app/providers/search_provider.dart';
+import 'package:movie_app/controllers/search_provider.dart';
 import 'package:movie_app/screens/detailed_screen.dart';
 import 'package:movie_app/utils/constants.dart';
 import 'package:provider/provider.dart';
