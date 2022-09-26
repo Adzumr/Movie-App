@@ -6,7 +6,7 @@ import 'package:movie_app/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../controllers/get_detail_provider.dart';
+import '../controllers/movie_controller.dart';
 
 class DetailedScreen extends StatefulWidget {
   final String? movieId;
@@ -19,7 +19,7 @@ class DetailedScreen extends StatefulWidget {
 class _DetailedScreenState extends State<DetailedScreen> {
   @override
   void initState() {
-    final data = Provider.of<GetDetailProvider>(context, listen: false);
+    final data = Provider.of<MovieProvider>(context, listen: false);
     getData = data.fetchDetail(keyWord: "${widget.movieId}");
     super.initState();
     Future.delayed(
@@ -31,7 +31,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<GetDetailProvider>(context);
+    final data = Provider.of<MovieProvider>(context);
 
     return Scaffold(
       backgroundColor: appColors.backgorundColor,

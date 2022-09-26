@@ -4,8 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
+import 'package:movie_app/controllers/movie_controller.dart';
 import 'package:movie_app/main.dart';
-import 'package:movie_app/controllers/search_provider.dart';
 import 'package:movie_app/screens/detailed_screen.dart';
 import 'package:movie_app/utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -23,14 +23,13 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   void dispose() {
-    searchEditingController.clear();
+    searchEditingController.dispose();
     super.dispose();
   }
-
   TextEditingController searchEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final searchResult = Provider.of<SearchProvider>(context);
+    final searchResult = Provider.of<MovieProvider>(context);
     return ModalProgressHUD(
       inAsyncCall: searchResult.isSearching,
       child: Scaffold(

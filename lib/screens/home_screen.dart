@@ -2,11 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:movie_app/controllers/movie_controller.dart';
 import 'package:movie_app/main.dart';
-import 'package:movie_app/controllers/now_playing_provider.dart';
-import 'package:movie_app/controllers/popular_provider.dart';
-import 'package:movie_app/controllers/top_rated_provider.dart';
-import 'package:movie_app/controllers/upcoming_provider.dart';
 import 'package:movie_app/screens/popular_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -34,18 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future loadData() async {
-    final data = Provider.of<TopRatedProvider>(context, listen: false);
-    getTopRated = data.fetchTopRated();
-    await Future.delayed(Duration.zero);
-    final popularData = Provider.of<PopularProvider>(context, listen: false);
-    getPopular = popularData.fetchPopular();
-    await Future.delayed(Duration.zero);
-    final upComingdata = Provider.of<UpComingProvider>(context, listen: false);
-    getUpcoming = upComingdata.fetchUpcoming();
-    await Future.delayed(Duration.zero);
-    final nowPlaying = Provider.of<NowPlayProvider>(context, listen: false);
-    getNowPlaying = nowPlaying.fetchNowPlaying();
-    await Future.delayed(Duration.zero);
+    final allData = Provider.of<MovieProvider>(context, listen: false);
+    getNowPlaying = allData.fetchNowPlaying();
+    getTopRated = allData.fetchTopRated();
+    getPopular = allData.fetchPopular();
+    getUpcoming = allData.fetchUpcoming();
   }
 
   Future? getTopRated;
@@ -54,10 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Future? getNowPlaying;
   @override
   Widget build(BuildContext context) {
-    final topRatedMovies = Provider.of<TopRatedProvider>(context);
-    final popularData = Provider.of<PopularProvider>(context);
-    final upComingdata = Provider.of<UpComingProvider>(context);
-    final nowPlaying = Provider.of<NowPlayProvider>(context);
+    final moviesData = Provider.of<MovieProvider>(context);
+    // final topRatedMovies = Provider.of<TopRatedProvider>(context);
+    // final popularData = Provider.of<PopularProvider>(context);
+    // final upComingdata = Provider.of<UpComingProvider>(context);
+    // final nowPlaying = Provider.of<NowPlayProvider>(context);
 
     return Scaffold(
       backgroundColor: appColors.backgorundColor,
@@ -76,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Container( 
+                child: Container(
                   margin: EdgeInsets.symmetric(vertical: 10.sp),
                   child: TextFormField(
                     validator: (value) =>
@@ -116,23 +107,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     } else if (snapshot.connectionState ==
                             ConnectionState.done &&
-                        nowPlaying.nowPlayingModel != null &&
-                        topRatedMovies.topRatedModel != null &&
-                        popularData.popularModel != null &&
-                        upComingdata.upComingModel != null) {
+                        moviesData.nowPlayingModel != null &&
+                        moviesData.topRatedModel != null &&
+                        moviesData.popularModel != null &&
+                        moviesData.upComingModel != null) {
                       return ListView(
                         // crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
+                        children: const [
                           // Now playing category
-                          NowPlayingWidget(nowPlayingdata: nowPlaying),
+                          NowPlayingWidget(
+                              // nowPlayingdata: moviesData.nowPlayingModel,
+                              ),
                           // Popular category
-                          PopularWidget(popularData: popularData),
+                          PopularWidget(
+                              // popularData: moviesData.popularModel,
+                              ),
 
                           // Top rated category
-                          TopRated(topRatedMovies: topRatedMovies),
+                          TopRated(
+                              // topRatedMovies: moviesData.topRatedModel,
+                              ),
 
                           // Upcoming category
-                          UpcomingWidget(upComingdata: upComingdata),
+                          UpcomingWidget(
+                              // upComingdata: moviesData.upComingModel,
+                              ),
                         ],
                       );
                     } else {
@@ -157,13 +156,11 @@ class _HomeScreenState extends State<HomeScreen> {
 class UpcomingWidget extends StatelessWidget {
   const UpcomingWidget({
     Key? key,
-    required this.upComingdata,
   }) : super(key: key);
-
-  final UpComingProvider upComingdata;
 
   @override
   Widget build(BuildContext context) {
+    final moviesData = Provider.of<MovieProvider>(context);
     return Column(
       children: [
         Container(
@@ -178,7 +175,7 @@ class UpcomingWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => UpComingListScreen(
-                        models: upComingdata.upComingModel,
+                        models: moviesData.upComingModel,
                       ),
                     ),
                   );
@@ -196,7 +193,7 @@ class UpcomingWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: ((context, index) {
-              final movie = upComingdata.upComingModel!.results![index];
+              final movie = moviesData.upComingModel!.results![index];
               return InkWell(
                 onTap: () {
                   Navigator.push(
@@ -243,13 +240,11 @@ class UpcomingWidget extends StatelessWidget {
 class TopRated extends StatelessWidget {
   const TopRated({
     Key? key,
-    required this.topRatedMovies,
   }) : super(key: key);
-
-  final TopRatedProvider topRatedMovies;
 
   @override
   Widget build(BuildContext context) {
+    final moviesData = Provider.of<MovieProvider>(context);
     return Column(
       children: [
         Container(
@@ -264,7 +259,7 @@ class TopRated extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => TopRatedListScreen(
-                        models: topRatedMovies.topRatedModel,
+                        models: moviesData.topRatedModel,
                       ),
                     ),
                   );
@@ -281,7 +276,7 @@ class TopRated extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: ((context, index) {
-              final movie = topRatedMovies.topRatedModel!.results![index];
+              final movie = moviesData.topRatedModel!.results![index];
               return InkWell(
                 onTap: () {
                   Navigator.push(
@@ -328,13 +323,11 @@ class TopRated extends StatelessWidget {
 class PopularWidget extends StatelessWidget {
   const PopularWidget({
     Key? key,
-    required this.popularData,
   }) : super(key: key);
-
-  final PopularProvider popularData;
 
   @override
   Widget build(BuildContext context) {
+    final movieData = Provider.of<MovieProvider>(context);
     return Column(
       children: [
         Container(
@@ -349,7 +342,7 @@ class PopularWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PopularListScreen(
-                        models: popularData.popularModel,
+                        models: movieData.popularModel,
                       ),
                     ),
                   );
@@ -366,7 +359,7 @@ class PopularWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: ((context, index) {
-              final movie = popularData.popularModel!.results![index];
+              final movie = movieData.popularModel!.results![index];
               return InkWell(
                 onTap: () {
                   Navigator.push(
@@ -413,13 +406,11 @@ class PopularWidget extends StatelessWidget {
 class NowPlayingWidget extends StatelessWidget {
   const NowPlayingWidget({
     Key? key,
-    required this.nowPlayingdata,
   }) : super(key: key);
-
-  final NowPlayProvider nowPlayingdata;
 
   @override
   Widget build(BuildContext context) {
+    final movieData = Provider.of<MovieProvider>(context);
     return Column(
       children: [
         Container(
@@ -434,7 +425,7 @@ class NowPlayingWidget extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => NowPlayingListScreen(
-                        models: nowPlayingdata.nowPlayingModel,
+                        models: movieData.nowPlayingModel,
                       ),
                     ),
                   );
@@ -451,7 +442,7 @@ class NowPlayingWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: ((context, index) {
-              final movie = nowPlayingdata.nowPlayingModel!.results![index];
+              final movie = movieData.nowPlayingModel!.results![index];
               return InkWell(
                 onTap: () {
                   Navigator.push(
