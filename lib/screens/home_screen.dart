@@ -112,26 +112,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         moviesData.popularModel != null &&
                         moviesData.upComingModel != null) {
                       return ListView(
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: const [
                           // Now playing category
-                          NowPlayingWidget(
-                              // nowPlayingdata: moviesData.nowPlayingModel,
-                              ),
+                          NowPlayingWidget(),
                           // Popular category
-                          PopularWidget(
-                              // popularData: moviesData.popularModel,
-                              ),
+                          PopularWidget(),
 
                           // Top rated category
-                          TopRated(
-                              // topRatedMovies: moviesData.topRatedModel,
-                              ),
+                          TopRated(),
 
                           // Upcoming category
-                          UpcomingWidget(
-                              // upComingdata: moviesData.upComingModel,
-                              ),
+                          UpcomingWidget(),
                         ],
                       );
                     } else {
@@ -157,7 +148,6 @@ class UpcomingWidget extends StatelessWidget {
   const UpcomingWidget({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final moviesData = Provider.of<MovieProvider>(context);
