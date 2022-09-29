@@ -18,9 +18,7 @@ class MovieProvider extends ChangeNotifier {
   bool isSearching = false;
   Future<UpComingModel?> fetchResult({String? keyWord}) async {
     isSearching = true;
-    seachModel = (await searchMovie(
-      keyword: keyWord,
-    ));
+    seachModel = (await searchMovie(keyword: keyWord));
     isSearching = false;
     notifyListeners();
     return null;

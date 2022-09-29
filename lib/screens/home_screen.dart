@@ -113,15 +113,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         moviesData.upComingModel != null) {
                       return ListView(
                         children: const [
-                          // Now playing category
+                          // Now playing Card
                           NowPlayingWidget(),
-                          // Popular category
+                          // Popular Card
                           PopularWidget(),
 
-                          // Top rated category
+                          // Top rated Card
                           TopRated(),
 
-                          // Upcoming category
+                          // Upcoming Card
                           UpcomingWidget(),
                         ],
                       );
